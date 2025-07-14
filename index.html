@@ -1,0 +1,112 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Multi Drawer Site</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: #f5f5f5;
+    }
+    header {
+      background: #222;
+      color: #fff;
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .icon-btn {
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: white;
+      cursor: pointer;
+    }
+    .drawer {
+      position: fixed;
+      top: 0;
+      width: 250px;
+      height: 100%;
+      background: #333;
+      color: white;
+      padding: 20px;
+      transform: translateX(-100%);
+      transition: 0.3s ease;
+      z-index: 1000;
+    }
+    .drawer.right {
+      right: 0;
+      left: auto;
+      transform: translateX(100%);
+    }
+    .drawer.active {
+      transform: translateX(0);
+    }
+    .main {
+      padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: white;
+      padding: 20px;
+      text-align: center;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+    .card:hover {
+      transform: scale(1.05);
+    }
+    .card img {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <button class="icon-btn" onclick="toggleDrawer('left')">☰</button>
+    <h2>My Website</h2>
+    <button class="icon-btn" onclick="toggleDrawer('right')">⋮</button>
+  </header>  <div id="leftDrawer" class="drawer">
+    <h3>Menu</h3>
+    <ul>
+      <li><a href="/sites/androidapps/index.html">Android Apps</a></li>
+      <li><a href="/sites/linuxapps/index.html">Linux Apps</a></li>
+      <li><a href="/sites/minecraftmods/index.html">Minecraft Mods</a></li>
+      <li><a href="/sites/others/index.html">Zip/Others</a></li>
+    </ul>
+  </div>
+  <div id="rightDrawer" class="drawer right">
+    <h3>Settings</h3>
+    <p>Yaha kuch bhi daal sakta hai.</p>
+  </div>  <div class="main">
+    <div class="card" onclick="location.href='/sites/androidapps/index.html'">
+      <img src="exampleimage.png" alt="Android Apps">
+      <p>Android Apps</p>
+    </div>
+    <div class="card" onclick="location.href='/sites/linuxapps/index.html'">
+      <img src="exampleimage.png" alt="Linux Apps">
+      <p>Linux Apps</p>
+    </div>
+    <div class="card" onclick="location.href='/sites/minecraftmods/index.html'">
+      <img src="exampleimage.png" alt="Minecraft Mods">
+      <p>Minecraft Mods</p>
+    </div>
+    <div class="card" onclick="location.href='/sites/others/index.html'">
+      <img src="exampleimage.png" alt="Zip or Others">
+      <p>Zip or Others</p>
+    </div>
+  </div>  <script>
+    function toggleDrawer(side) {
+      const drawer = document.getElementById(side + 'Drawer');
+      drawer.classList.toggle('active');
+    }
+  </script></body>
+</html>
